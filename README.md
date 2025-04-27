@@ -1,50 +1,146 @@
-# CS 4288: Web-based System Architecture 
-## Programming Assignment 6
+# Klondike Solitaire Web Application
 
-## Overview
+A modern, web-based implementation of the classic card game Klondike Solitaire, built with secure authentication, real-time gameplay, and a responsive user interface.
 
-This is it!  In this assignment you will get to a deployed web-based Klondike Solitaire application.  Let's get started...
+## 🎯 Features
 
-On the Derby Day your application will be evaluated by a number of other students in class.  Your application will earn points based on its capabilities (see below).
+- **Secure Access**: HTTPS deployment with CA-issued certificates
+- **Multiple Authentication Options**: 
+  - Native authentication system
+  - GitHub OAuth integration
+- **Advanced Gameplay**:
+  - Full solitaire game implementation
+  - Autocomplete functionality for valid moves
+  - Infinite undo/redo capabilities
+  - Game state persistence and history
+- **User Features**:
+  - Customizable user profiles
+  - Game history with move-by-move replay
+  - End-game detection and statistics
 
-IMPORTANT: Modify your landing page to list which items below should be tested.  That way someone coming to your site knows what they should spend time on and what they should not waste their time on.
+## 🚀 Quick Start
 
-* 30% of your grade will be awarded based on a manual code review by the instructor
-* 70+% of your grade will be based on the Derby Day peer review  
-* It is possible to earn more than 100% of the points
-* You are free to change, add or remove any code within your application.  All reused code (not recorded into package.json) must be attributed
+### Prerequisites
 
-### Here are the places to earn (or lose) points:
+- Node.js (v16+)
+- npm or yarn
+- MongoDB database
+- SSL certificate for HTTPS
 
-1. (30 points - mandatory) Instructor code review.  Is it clean, well-structured, modular code.
+### Installation
 
-1. (20 points - mandatory) You need to deploy with HTTPS.  It must be publicly available on the general internet (not just on Vandy campus).  The IP address must not change for the 3 days prior to the Derby and during the entire Derby Day.  This means AWS is an excellent option, but not the only one.  You must employ HTTPS with a CA issued certificate.  Must not pop any warnings or errors on users' Chrome browser.
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/klondike-solitaire.git
 
-1. (10 points) Enable modification of a user's profile.  Must be saved back to the DB and viewable immediately by anyone else the going to the user's profile page and within the user's own header component.
+# Navigate to project directory
+cd klondike-solitaire
 
-1. (10 points) Fully working "results" page.  Must display information for every move in a game.
+# Install dependencies
+npm install
 
-1. (30 points) If results page is fully working (see above), additional points can be earned if each move is click-able and renders the state of the game after the completion of the clicked move.  Game does not need to be playable from that rendering.
+# Set up environment variables
+cp .env.example .env
+# Edit .env with your configuration
+```
 
-1. (40 points) Register and log in via Github.  Offer users the ability register and login using either native auth or the Github OAuth mechanism discussed in class.  You must never directly ask the user for their username, password, or any other information if they choose Github - it must all be pulled from Github.
+### Development
 
-1. (40 points) Autocomplete button.  Will play all valid moves from the piles to the stacks.  Must send (and validate) each move to the server.  Should be clickable at any time as long as there are valid moves.
+```bash
+# Run in development mode
+npm run dev
 
-1. (10 points) Recognize end of game, i.e. that there are no moves from piles to the stacks and that there are no useable moves from the discard pile to the stacks.  This recognition may ignore rearrangements of the piles that would result in new moves becoming available.  So, if end-of-game is recognized, prompt user if they want to end game.  The other possible end of game is that all cards have been successfully moved to the four foundation piles.
+# Build for production
+npm run build
 
-1. (10 points) Infinite undo/redo.  Two UI buttons that let the user undo all moves back to the start of the game.  This will require new REST API endpoints to properly handle game state.  The redo stack should always be cleared if the user plays a new move.
+# Start production server
+npm start
+```
 
-1. (-10 points) Game not playable.  You had to implement all of the gameplay mechanics for Assignment 5, so this should be solid.
+## 🏗️ Architecture
 
-1. (-10 points) Console is spewing any errors or warnings.  I like it clean people!
+### Tech Stack
 
-### Super Bonus Points
+- **Frontend**: React with modern JavaScript
+- **Backend**: Node.js/Express
+- **Database**: MongoDB
+- **Authentication**: Passport.js (native and GitHub OAuth)
+- **Deployment**: HTTPS with public accessibility
 
-* 10 points - Awarded to the one most attractive application as voted on by the other students.  A tie will split the points.
+### Project Structure
 
-* 10 points - Awarded to the one student with the smallest client JS bundle (```/public/main.js```).  A tie will split the points
+```
+├── client/          # React frontend
+├── server/          # Express backend
+├── config/          # Configuration files
+├── middleware/      # Custom middleware
+├── models/          # Database models
+├── routes/          # API routes
+└── public/          # Static assets
+```
 
+## 🔐 Security Features
 
-## Submission:
+- HTTPS encryption with valid CA certificates
+- Secure authentication mechanisms
+- Session management
+- Input validation and sanitization
 
-You must still commit your code to your repo by the start of class on Derby Day.  Failure to do so will result in the loss of the 30 points from code review.  Failure to publicly host the application during the Derby will result in the loss of 70+% of your points.  You have to make this happen.
+## 📱 User Interface
+
+- Responsive design for all device sizes
+- Clean and intuitive game interface
+- User-friendly navigation
+- Real-time game state updates
+
+## 🎮 Game Features
+
+- Standard Klondike Solitaire rules
+- Move validation
+- Automatic card movement to foundations
+- Game history and statistics tracking
+- End-game detection and handling
+
+## 👥 User Management
+
+- User registration and authentication
+- Editable user profiles
+- Game history tracking
+- Persistent user preferences
+
+## 🧪 Testing
+
+```bash
+# Run tests
+npm test
+
+# Run tests with coverage
+npm run test:coverage
+```
+
+## 📚 API Documentation
+
+The REST API endpoints include:
+
+- `/api/auth/*` - Authentication endpoints
+- `/api/game/*` - Game state management
+- `/api/user/*` - User profile operations
+- `/api/results/*` - Game history and results
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- Original Klondike Solitaire design
+- Vanderbilt University CS 4288 course
+- Contributors and testers
